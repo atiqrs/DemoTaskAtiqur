@@ -19,7 +19,6 @@ class CustomAdapter extends BaseAdapter {
 
     Context context;
     private List<Information> infoList;
-    private ArrayList<String> list;
     LayoutInflater inflater;
 
     public CustomAdapter(Context context, List<Information> infoList) {
@@ -27,15 +26,9 @@ class CustomAdapter extends BaseAdapter {
         this.infoList = infoList;
     }
 
-    public CustomAdapter(Context context, ArrayList<String> list) {
-        this.context = context;
-        this.list = list;
-    }
-
     @Override
     public int getCount() {
-        //return infoList.size();
-        return list.size();
+        return infoList.size();
     }
 
     @Override
@@ -60,7 +53,7 @@ class CustomAdapter extends BaseAdapter {
         TextView mobileTextView = convertView.findViewById(R.id.mobileTextView);
         TextView emailTextView = convertView.findViewById(R.id.emailTextView);
 
-        /*final Information info = infoList.get(position);
+        final Information info = infoList.get(position);
         String name = info.getName();
         String mobile = info.getMobile();
         String email = info.getEmail();
@@ -73,7 +66,7 @@ class CustomAdapter extends BaseAdapter {
 
         nameTextView.setText(name);
         mobileTextView.setText(mobile);
-        emailTextView.setText(email);*/
+        emailTextView.setText(email);
 
         return convertView;
     }
