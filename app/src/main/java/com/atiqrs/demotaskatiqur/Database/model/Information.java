@@ -1,6 +1,8 @@
 package com.atiqrs.demotaskatiqur.Database.model;
 
-public class Information {
+import java.io.Serializable;
+
+public class Information implements Serializable {
     public static final String TABLE_NAME = "info";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NAME = "name";

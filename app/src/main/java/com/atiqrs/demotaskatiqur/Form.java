@@ -20,28 +20,38 @@ import java.util.List;
 
 public class Form extends AppCompatActivity /*implements View.OnClickListener*/ {
     private EditText nameForm,mobileForm,emailForm;
-    private Button submitButtonForm,skipButtonForm;
+    private Button submitButtonForm,skipButtonForm,editButtonForm;
     private TextView noInfoView;
     CustomAdapter infoAdapter;
     private List<Information> infoList = new ArrayList<>();
     private int count=0;
     private DatabaseHelper db;
-    Intent intent;
+    private Intent intent;
+    private Information information;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
 
-        db = new DatabaseHelper(this);
-
-        Log.d("info","Form class");
         nameForm = findViewById(R.id.nameForm);
         mobileForm = findViewById(R.id.mobileForm);
         emailForm = findViewById(R.id.emailForm);
         submitButtonForm = findViewById(R.id.submitButtonForm);
         skipButtonForm = findViewById(R.id.skipButtonForm);
+        editButtonForm = findViewById(R.id.editButtonForm);
         //noInfoView = findViewById(R.id.noInfoView);
+
+        if(getIntent().getSerializableExtra("val") != null){
+            information = (Information) getIntent().getSerializableExtra("val");
+            nameForm.setText(information.getName());
+            mobileForm.setText(information.getMobile());
+            emailForm.setText(information.getEmail());
+
+            editButtonForm.setVisibility(View.VISIBLE);
+            skipButtonForm.setVisibility(View.GONE);
+        }
+        db = new DatabaseHelper(this);
 
         skipButtonForm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +74,22 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
                 }
             }
         });
+
+        editButtonForm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    db.updateInfo(information);
+                    information.setName(nameForm.getText().toString());
+                    information.setMobile(mobileForm.getText().toString());
+                    information.setEmail(emailForm.getText().toString());
+                    Toast.makeText(getApplicationContext(), "Update info on DB!", Toast.LENGTH_SHORT).show();
+                } catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Error! cant updating info on DB!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
     private void insertInformation(String name, String mobile, String email) {

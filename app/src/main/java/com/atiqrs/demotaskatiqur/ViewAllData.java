@@ -2,9 +2,12 @@ package com.atiqrs.demotaskatiqur;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,6 +38,16 @@ public class ViewAllData extends AppCompatActivity {
 
         CustomAdapter adapter = new CustomAdapter(this,informations);
         allInfoView.setAdapter(adapter);
+        allInfoView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                String value = ListItemName[position];
+//                Toast.makeText(MainActivity.this, "Selected item is: "+value, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(),Form.class);
+                intent.putExtra("val",informations.get(position));
+                startActivity(intent);
+            }
+        });
 
     }
 }

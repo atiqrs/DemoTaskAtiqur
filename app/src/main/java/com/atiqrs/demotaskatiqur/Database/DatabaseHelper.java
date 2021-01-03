@@ -173,4 +173,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    public int updateInfo(Information info) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(Information.COLUMN_ID, info.getId());
+        values.put(Information.COLUMN_NAME, info.getName());
+        values.put(Information.COLUMN_MOBILE, info.getMobile());
+        values.put(Information.COLUMN_EMAIL, info.getEmail());
+
+        // updating row
+        return db.update(Information.TABLE_NAME, values, Information.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(info.getId())});
+    }
+
 }
