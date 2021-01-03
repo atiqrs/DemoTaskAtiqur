@@ -7,10 +7,11 @@ import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.atiqrs.demotaskatiqur.Database.model.Information;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -85,6 +86,80 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
 
         return info;
+    }
+
+/*    private Cursor ShowSQLiteDBdata() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM "+Information.TABLE_NAME;
+        Cursor cursor = SQLiteDatabase.rawQuery(query, null);
+
+        Cursor cursor = db.query(Information.TABLE_NAME,
+                new String[]{Information.COLUMN_ID,
+                        Information.COLUMN_NAME,
+                        Information.COLUMN_MOBILE,
+                        Information.COLUMN_EMAIL,},
+                Note.COLUMN_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        // prepare note object
+        Information info = new Information(
+                cursor.getInt(cursor.getColumnIndex(Information.COLUMN_ID)),
+                cursor.getString(cursor.getColumnIndex(Information.COLUMN_NAME)),
+                cursor.getString(cursor.getColumnIndex(Information.COLUMN_MOBILE)),
+                cursor.getString(cursor.getColumnIndex(Information.COLUMN_EMAIL)));
+
+        if (cursor.moveToFirst()) {
+            do {
+                ID_ArrayList.add(cursor.getString(cursor.getColumnIndex(Information.COLUMN_ID)));
+                NAME_ArrayList.add(cursor.getString(cursor.getColumnIndex(Information.COLUMN_NAME)));
+
+                PHONE_NUMBER_ArrayList.add(cursor.getString(cursor.getColumnIndex(Information.COLUMN_MOBILE)));
+
+                SUBJECT_ArrayList.add(cursor.getString(cursor.getColumnIndex(Information.COLUMN_EMAIL)));
+
+            } while (cursor.moveToNext());
+        }
+
+        mAdapter = new NotesAdapter(this, notesList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+
+
+        allInfoView = findViewById(R.id.allInfoView);
+        noInfoView = findViewById(R.id.noInfoView);
+        //infoAdapter = new CustomAdapter(this,name,mobile,email);
+        //listView.setAdapter(infoAdapter);
+        infoAdapter = new CustomAdapter(this, familyName, works, images);
+        allInfoView.setAdapter(infoAdapter);
+    }*/
+
+    public List<Information> getAllInfo() {
+        List<Information> informations = new ArrayList<>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + Information.TABLE_NAME+ " ORDER BY " +
+                Information.COLUMN_ID + " DESC";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        while (cursor.moveToNext()){
+                Information info = new Information();
+                info.setId(cursor.getInt(cursor.getColumnIndex(Information.COLUMN_ID)));
+                info.setName(cursor.getString(cursor.getColumnIndex(Information.COLUMN_NAME)));
+                info.setMobile(cursor.getString(cursor.getColumnIndex(Information.COLUMN_MOBILE)));
+                info.setEmail(cursor.getString(cursor.getColumnIndex(Information.COLUMN_EMAIL)));
+                informations.add(info);
+            }
+
+        // close db connection
+        db.close();
+        // return notes list
+        return informations;
     }
 
     public int getNotesCount() {

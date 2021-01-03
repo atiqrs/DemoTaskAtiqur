@@ -41,7 +41,7 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
         emailForm = findViewById(R.id.emailForm);
         submitButtonForm = findViewById(R.id.submitButtonForm);
         skipButtonForm = findViewById(R.id.skipButtonForm);
-        noInfoView = findViewById(R.id.noInfoView);
+        //noInfoView = findViewById(R.id.noInfoView);
 
         skipButtonForm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,11 +55,12 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
             @Override
             public void onClick(View v) {
                 try {
-                    insertInformation(nameForm.getText().toString(),
+                    db.insertInformation(nameForm.getText().toString(),
                             mobileForm.getText().toString(),
                             emailForm.getText().toString());
-                } catch (Exception e){
                     Toast.makeText(getApplicationContext(), "Insert info on DB!", Toast.LENGTH_SHORT).show();
+                } catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Error! cant insert info on DB!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

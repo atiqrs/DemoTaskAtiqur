@@ -19,7 +19,7 @@ public class Information {
                     + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + COLUMN_NAME + " TEXT,"
                     + COLUMN_MOBILE + " TEXT,"
-                    + COLUMN_EMAIL + " TEXT,"
+                    + COLUMN_EMAIL + " TEXT"
                     + ")";
 
     public Information() {
