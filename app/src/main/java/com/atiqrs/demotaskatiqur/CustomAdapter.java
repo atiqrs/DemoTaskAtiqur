@@ -57,12 +57,6 @@ class CustomAdapter extends BaseAdapter {
         String name = info.getName();
         String mobile = info.getMobile();
         String email = info.getEmail();
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("ppp", "onClick: "+info.getName());
-            }
-        });
 
         nameTextView.setText(name);
         mobileTextView.setText(mobile);

@@ -50,6 +50,7 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
 
             editButtonForm.setVisibility(View.VISIBLE);
             skipButtonForm.setVisibility(View.GONE);
+            submitButtonForm.setVisibility(View.GONE);
         }
         db = new DatabaseHelper(this);
 
@@ -79,10 +80,12 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
             @Override
             public void onClick(View v) {
                 try {
-                    db.updateInfo(information);
                     information.setName(nameForm.getText().toString());
                     information.setMobile(mobileForm.getText().toString());
                     information.setEmail(emailForm.getText().toString());
+                    db.updateInfo(information);
+                    intent = new Intent(getApplicationContext(),ViewAllData.class);
+                    startActivity(intent);
                     Toast.makeText(getApplicationContext(), "Update info on DB!", Toast.LENGTH_SHORT).show();
                 } catch (Exception e){
                     Toast.makeText(getApplicationContext(), "Error! cant updating info on DB!", Toast.LENGTH_SHORT).show();
@@ -102,16 +105,10 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
             // refreshing the list
             //infoAdapter.notifyDataSetChanged();
 
-            toggleEmptyNotes();
             count++;
         }
     }
 
-    private void toggleEmptyNotes() {
-        if (db.getNotesCount() > 0) {
-            noInfoView.setVisibility(View.GONE);
-        } else {
-            noInfoView.setVisibility(View.VISIBLE);
-        }
-    }
+
+
 }

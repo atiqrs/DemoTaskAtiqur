@@ -73,7 +73,7 @@
             android:layout_gravity="center"
             android:visibility="gone"
             android:id="@+id/editButtonForm"
-            android:text="Skip"
+            android:text="edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

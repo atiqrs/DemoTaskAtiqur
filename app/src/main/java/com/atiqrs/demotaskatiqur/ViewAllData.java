@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -21,9 +22,10 @@ public class ViewAllData extends AppCompatActivity {
 
     TextView noInfoView;
     ListView allInfoView;
-    CustomAdapter infoAdapter;
     List<Information> informations = new ArrayList<>();
     private DatabaseHelper db;
+    Intent intent;
+    CustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +38,22 @@ public class ViewAllData extends AppCompatActivity {
         db = new DatabaseHelper(this);
         informations.addAll(db.getAllInfo());
 
-        CustomAdapter adapter = new CustomAdapter(this,informations);
+        adapter = new CustomAdapter(this,informations);
         allInfoView.setAdapter(adapter);
         allInfoView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                String value = ListItemName[position];
-//                Toast.makeText(MainActivity.this, "Selected item is: "+value, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(),Form.class);
+                Log.d("hello", "allInfoView.setOnItemClickListener is ok ");
+                intent = new Intent(getApplicationContext(),Form.class);
                 intent.putExtra("val",informations.get(position));
                 startActivity(intent);
             }
         });
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 }
