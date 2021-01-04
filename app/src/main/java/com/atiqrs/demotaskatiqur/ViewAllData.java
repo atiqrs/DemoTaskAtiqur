@@ -50,6 +50,7 @@ public class ViewAllData extends AppCompatActivity {
                 intent.putExtra("val",informations.get(position));
                 Log.d("hello", "333");
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -58,5 +59,16 @@ public class ViewAllData extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        intent = new Intent(getApplicationContext(),Form.class);
+        Log.d("hello", "222");
+        intent.putExtra("backPressed","backPressed");
+        Log.d("hello", "333");
+        startActivity(intent);
+        finish();
     }
 }

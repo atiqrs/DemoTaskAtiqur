@@ -58,13 +58,10 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
             nameForm.setText(information.getName());
             mobileForm.setText(information.getMobile());
             emailForm.setText(information.getEmail());
-        } else {
-            setTitle("Form Page");
-            formTitle.setText("Input your Information");
-            updateButtonForm.setVisibility(View.GONE);
-            deleteButtonForm.setVisibility(View.GONE);
-            showButtonForm.setVisibility(View.VISIBLE);
-            submitButtonForm.setVisibility(View.VISIBLE);
+        } else if(getIntent().getSerializableExtra("backPressed") != null) {
+            setForm();
+        } else{
+            setForm();
         }
 
         db = new DatabaseHelper(this);
@@ -92,6 +89,7 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
             public void onClick(View v) {
                 intent = new Intent(getApplicationContext(),ViewAllData.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -105,6 +103,7 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
                     db.updateInfo(information);
                     intent = new Intent(getApplicationContext(),ViewAllData.class);
                     startActivity(intent);
+                    finish();
                     Toast.makeText(getApplicationContext(), "Update info on DB!", Toast.LENGTH_SHORT).show();
                     nameForm.setText("");
                     mobileForm.setText("");
@@ -122,6 +121,7 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
                     db.deleteInfo(information);
                     intent = new Intent(getApplicationContext(),ViewAllData.class);
                     startActivity(intent);
+                    finish();
                     Toast.makeText(getApplicationContext(), "Delete info from DB!", Toast.LENGTH_SHORT).show();
                     nameForm.setText("");
                     mobileForm.setText("");
@@ -131,5 +131,21 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
                 }
             }
         });
+    }
+
+    private void setForm() {
+        setTitle("Form Page");
+        formTitle.setText("Input your Information");
+        updateButtonForm.setVisibility(View.GONE);
+        deleteButtonForm.setVisibility(View.GONE);
+        showButtonForm.setVisibility(View.VISIBLE);
+        submitButtonForm.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        setForm();
+        finish();
     }
 }

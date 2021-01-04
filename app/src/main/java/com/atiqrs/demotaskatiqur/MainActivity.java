@@ -34,8 +34,15 @@ public class MainActivity extends AppCompatActivity {
                 if (username.equals(USERNAME) && password.equals(PASSWORD)){
                     Intent intent = new Intent(getApplicationContext(),Form.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
