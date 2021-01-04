@@ -187,4 +187,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 new String[]{String.valueOf(info.getId())});
     }
 
+    public void deleteInfo(Information info) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Information.TABLE_NAME, Information.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(info.getId())});
+        db.close();
+    }
+
 }

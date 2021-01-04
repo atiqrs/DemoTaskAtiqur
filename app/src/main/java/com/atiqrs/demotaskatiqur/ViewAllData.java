@@ -43,9 +43,11 @@ public class ViewAllData extends AppCompatActivity {
         allInfoView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("hello", "allInfoView.setOnItemClickListener is ok ");
+                Log.d("hello", "111");
                 intent = new Intent(getApplicationContext(),Form.class);
+                Log.d("hello", "222");
                 intent.putExtra("val",informations.get(position));
+                Log.d("hello", "333");
                 startActivity(intent);
             }
         });
