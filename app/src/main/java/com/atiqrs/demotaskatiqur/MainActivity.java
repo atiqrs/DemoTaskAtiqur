@@ -20,9 +20,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTitle("Log in");
         loginUsername= findViewById(R.id.loginUsername);
         loginPass= findViewById(R.id.loginPass);
         logInButton= findViewById(R.id.logInButton);
+
 
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override

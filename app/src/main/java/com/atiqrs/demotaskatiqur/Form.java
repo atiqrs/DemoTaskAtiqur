@@ -69,7 +69,7 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
 
         db = new DatabaseHelper(this);
 
-        submitButtonForm.setOnClickListener(new View.OnClickListener() {
+        submitButtonForm.setOnClickListener(new  View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -77,6 +77,10 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
                             mobileForm.getText().toString(),
                             emailForm.getText().toString());
                     Toast.makeText(getApplicationContext(), "Insert info on DB!", Toast.LENGTH_SHORT).show();
+                    //clear all field
+                    nameForm.setText("");
+                    mobileForm.setText("");
+                    emailForm.setText("");
                 } catch (Exception e){
                     Toast.makeText(getApplicationContext(), "Error! cant insert info on DB!", Toast.LENGTH_SHORT).show();
                 }
@@ -102,6 +106,9 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
                     intent = new Intent(getApplicationContext(),ViewAllData.class);
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(), "Update info on DB!", Toast.LENGTH_SHORT).show();
+                    nameForm.setText("");
+                    mobileForm.setText("");
+                    emailForm.setText("");
                 } catch (Exception e){
                     Toast.makeText(getApplicationContext(), "Error! cant updating info on DB!", Toast.LENGTH_SHORT).show();
                 }
@@ -115,9 +122,12 @@ public class Form extends AppCompatActivity /*implements View.OnClickListener*/ 
                     db.deleteInfo(information);
                     intent = new Intent(getApplicationContext(),ViewAllData.class);
                     startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Update info on DB!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Delete info from DB!", Toast.LENGTH_SHORT).show();
+                    nameForm.setText("");
+                    mobileForm.setText("");
+                    emailForm.setText("");
                 } catch (Exception e){
-                    Toast.makeText(getApplicationContext(), "Error! cant updating info on DB!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error! cant Delete info from DB!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

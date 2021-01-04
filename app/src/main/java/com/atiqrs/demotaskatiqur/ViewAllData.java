@@ -32,6 +32,7 @@ public class ViewAllData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all_data);
 
+        setTitle("Database all info");
         allInfoView = findViewById(R.id.allInfoView);
         //noInfoView = findViewById(R.id.noInfoView);
 
