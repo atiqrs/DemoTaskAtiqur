@@ -3,17 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:weightSum="7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:gravity="center"
     android:background="@color/colorPrimaryBackground"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:layout_weight="6"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:gravity="center">
 
@@ -74,4 +77,13 @@
             android:textSize="20sp"/>
     </LinearLayout>
 
+    <TextView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Developed by:\nAtiqur Rahman\n01670871257\natiqrs.me@gmail.com"
+        android:textStyle="italic"
+        android:textAlignment="center"
+        android:paddingBottom="5dp"
+        />
 </LinearLayout>
