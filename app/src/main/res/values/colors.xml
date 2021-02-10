@@ -15,4 +15,5 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#008577</color>
     <color name="colorPrimaryBackgroundDarkTrans">#75025C47</color>
+    <color name="brown">#75494C4B</color>
 </resources>

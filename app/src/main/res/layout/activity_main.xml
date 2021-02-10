@@ -67,12 +67,26 @@
                 android:maxLines="1"
                 />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_margin="10dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remember me"
+                android:textColor="@color/brown"
+                android:textSize="12sp"
+                android:id="@+id/rememberCheckBox"/>
+
+        </LinearLayout>
+
         <Button
             android:id="@+id/logInButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
-            android:layout_marginTop="10dp"
             android:text="log in"
             android:textSize="20sp"/>
     </LinearLayout>
