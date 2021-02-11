@@ -4,90 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
     android:background="@color/colorPrimaryBackground"
+    android:padding="20dp"
     tools:context=".Form">
 
     <LinearLayout
-        android:gravity="center"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/formTitle"
-            android:layout_marginBottom="10dp"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/nameForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"/>
+            android:maxLines="1" />
+
         <EditText
-            android:inputType="numberDecimal"
             android:id="@+id/mobileForm"
-            android:hint="Mobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:maxLength="32"/>
+            android:hint="Mobile"
+            android:inputType="numberDecimal"
+            android:maxLength="32"
+            android:maxLines="1" />
+
         <EditText
             android:id="@+id/emailForm"
-            android:hint="Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1"/>
+            android:hint="Email"
+            android:maxLines="1" />
 
         <Button
-            android:textSize="20sp"
+            android:id="@+id/submitButtonForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:backgroundTint="@color/colorPrimary"
-            android:layout_gravity="center"
-            android:id="@+id/submitButtonForm"
             android:text="Submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textSize="20sp" />
 
         <Button
-            android:textSize="20sp"
+            android:id="@+id/showButtonForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:backgroundTint="@color/colorPrimaryBackgroundDark"
-            android:layout_gravity="center"
-            android:id="@+id/showButtonForm"
             android:text="show all data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:textSize="20sp" />
 
         <Button
-            android:textSize="20sp"
+            android:id="@+id/updateButtonForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:backgroundTint="@color/colorPrimary"
-            android:layout_gravity="center"
-            android:visibility="gone"
-            android:id="@+id/updateButtonForm"
             android:text="Update"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <Button
-            android:textSize="20sp"
+            android:id="@+id/deleteButtonForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:backgroundTint="@color/purple_700"
-            android:layout_gravity="center"
-            android:id="@+id/deleteButtonForm"
             android:text="delete"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textSize="20sp"
+            android:visibility="gone" />
 
     </LinearLayout>
 
